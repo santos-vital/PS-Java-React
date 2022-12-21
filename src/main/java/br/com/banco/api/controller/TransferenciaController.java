@@ -41,6 +41,19 @@ public class TransferenciaController {
     return transferenciaRepository.findByDataTransferenciaBetween(dataInicio, dataFim);
   }
 
+  @GetMapping("/nome-operador-transacao")
+  public List<Transferencia> transferenciaPorNome(String nome) {
+    return transferenciaRepository.findByNomeOperadorTransacao(nome);
+  }
+
+  @GetMapping("/transferencia-por-nome-e-data")
+  public List<Transferencia> transferenciaPorDataNome(
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim, String nome) {
+
+    return transferenciaRepository.findByNomeData(dataInicio, dataFim, nome);
+  }
+
   @PostMapping
   public ResponseEntity<?> adicionar(@RequestBody Transferencia transferencia) {
     try {

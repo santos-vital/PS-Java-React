@@ -38,7 +38,7 @@ public class Transferencia {
   @Column(nullable = false)
   private String tipo;
 
-  private String nome_operador_transacao;
+  private String nomeOperadorTransacao;
 
   @ManyToOne
   @JoinColumn(name = "conta_id", nullable = false)
