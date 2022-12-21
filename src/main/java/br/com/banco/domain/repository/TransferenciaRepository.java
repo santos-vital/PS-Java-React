@@ -12,14 +12,9 @@ import br.com.banco.domain.model.Transferencia;
 @Component
 public interface TransferenciaRepository extends JpaRepository<Transferencia, Long>, TransferenciaRepositoryQueries {
 
-    List<Transferencia> findByDataTransferenciaBetween(
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim);
+        List<Transferencia> findByDataTransferenciaBetween(
+                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
+                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim);
 
-    List<Transferencia> findByNomeOperadorTransacao(String nomeOperadorTransacao);
-
-    List<Transferencia> findByNomeOperadorTransacaoOrDataTransferenciaBetween(
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim,
-            String nomeOperadorTransacao);
+        List<Transferencia> findByNomeOperadorTransacao(String nomeOperadorTransacao);
 }
