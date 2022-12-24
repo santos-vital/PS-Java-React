@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,12 +16,18 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Transferencia {
 
   @EqualsAndHashCode.Include
@@ -29,18 +37,18 @@ public class Transferencia {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   @CreationTimestamp
-  @Column(nullable = false, columnDefinition = "datetime")
+  @Column(columnDefinition = "datetime")
   private LocalDate dataTransferencia;
 
-  @Column(nullable = false)
   private BigDecimal valor;
 
-  @Column(nullable = false)
-  private String tipo;
+  @Column(name = "tipo")
+  @Enumerated(value = EnumType.STRING)
+  private Tipo tipo;
 
   private String nomeOperadorTransacao;
 
   @ManyToOne
-  @JoinColumn(name = "conta_id", nullable = false)
+  @JoinColumn(name = "conta_id")
   private Conta conta;
 }

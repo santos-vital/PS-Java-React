@@ -1,5 +1,7 @@
 package br.com.banco.domain.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -29,5 +31,9 @@ public class CadastroContaService {
     } catch (DataIntegrityViolationException e) {
       throw new EntidadeEmUsoException(String.format("Conta de código %d não pode ser removida, pois está em uso", id));
     }
+  }
+
+	public Optional<Conta> buscarPorId(Long id) {
+    return contaRepository.findById(id);
   }
 }

@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.banco.domain.model.dto.ContaDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,6 +20,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Conta {
+
+  public Conta(ContaDTO contaDTO) {
+    this.nome = contaDTO.getNome();
+  }
+
+  public Conta() {
+  }
 
   @EqualsAndHashCode.Include
   @Id
