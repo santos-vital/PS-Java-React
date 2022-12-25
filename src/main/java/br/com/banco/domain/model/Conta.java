@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.banco.domain.model.dto.ContaDTO;
+import br.com.banco.api.model.ContaDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

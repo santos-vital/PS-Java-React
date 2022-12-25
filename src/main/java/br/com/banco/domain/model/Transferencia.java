@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,5 +52,6 @@ public class Transferencia {
 
   @ManyToOne
   @JoinColumn(name = "conta_id")
+  @JsonIgnore
   private Conta conta;
 }

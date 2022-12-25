@@ -1,4 +1,4 @@
-package br.com.banco.domain.model.dto;
+package br.com.banco.api.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
